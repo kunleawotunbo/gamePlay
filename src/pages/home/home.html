@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ 
+
+  <!--
+    <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button color="secondary" (click)="viewItem()">Spot the diff</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="secondary">Hidden Words</button>
+      </ion-col>     
+    </ion-row>
+
+      <ion-row>
+      <ion-col>
+        <button ion-button color="secondary">Lock Games</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="secondary">Puzzles & Quizzes</button>
+      </ion-col>     
+    </ion-row>
+
+
+      <ion-row>
+      <ion-col>
+        <button ion-button color="secondary">Criminal Cases </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="secondary">Facial Recog</button>
+      </ion-col>     
+    </ion-row>
+
+  </ion-grid>
+  -->
+
+  <ion-list>
+    <ion-item *ngFor="let item of gameCategories" (click)="viewItem(item)">
+      <ion-avatar item-left>
+        <img src="{{item.gameName}}">
+      </ion-avatar>
+      <h2>{{item.gameName}}</h2>
+      <p>Id: {{item.id}}, GameCode: {{item.gameCode}}</p>
+      <!--<button ion-button clear item-right (click)="viewItem(item)">View</button>-->
+    </ion-item>
+  </ion-list>
+  <!--
+  <ion-list>
+    <ion-item *ngFor="let c of countries">
+      <ion-avatar item-left>
+        <img src="{{c.flag}}">
+      </ion-avatar>
+      <h2>{{c.name}}</h2>
+      <p>Capital: {{c.capital}}, Region: {{c.region}}</p>
+    </ion-item>
+  </ion-list>
+  -->
+</ion-content>
