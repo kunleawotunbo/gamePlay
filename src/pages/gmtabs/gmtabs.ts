@@ -13,8 +13,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'gmtabs.html',
 })
 export class Gmtabs {
-   tab4Root = 'BACK';
-  tab5Root = 'MENU';
+   tab4Root = 'HomePage';
+  tab5Root = 'ContactPage';
   //tab3Root = 'ContactPage';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

@@ -28,10 +28,14 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  orange:   #FF8C00	
 );
 
-
+$black: map-get($colors, dark);
+$toolbar-background: map-get($colors, dark);
+$positive: map-get($colors, dark);
+$tabs-background: map-get($colors, dark);
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

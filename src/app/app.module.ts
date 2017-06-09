@@ -8,6 +8,11 @@ import { GameSectionPage } from '../pages/gamesection/gamesection';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AdMobFree } from '@ionic-native/admob-free';
+import { AdmobFreeProvider } from '../providers/admob-free-provider';
+import { AdMob } from '@ionic-native/admob';
+import {Advert} from '../providers/advert';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +33,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Rest
+    Rest,
+    AdMobFree,
+    AdmobFreeProvider,
+    AdMob,
+    Advert
   ]
 })
 export class AppModule {}
