@@ -19,7 +19,7 @@ rootPage :: {{rootPage}}-->
   <!--rootPage in content :: {{rootPage}}-->
   <img src="assets/images/{{item.id}}.jpg">
 
-  <button ion-button icon-only menuToggle (click)= "takeMeBack()">
+  <button ion-button icon-only menuToggle (click)="takeMeBack()">
     <ion-icon name="arrow-back"></ion-icon>
   </button>
 
@@ -34,9 +34,25 @@ rootPage :: {{rootPage}}-->
 
 
 <ion-tabs>
-  <!--<ion-tab [root]="tab4Root" tabTitle="BACK" tabIcon="back"></ion-tab>
-  <ion-tab [root]="tab5Root" tabTitle="MENU" tabIcon="menu"></ion-tab>-->
 
-<ion-tab [root]="tab4Root" tabTitle="BACK" tabIcon="back"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="BACK" tabIcon="back"></ion-tab>
   <ion-tab [root]="tab5Root" tabIcon="menu"></ion-tab>
 </ion-tabs>
+
+<ion-footer no-border>
+
+  <ion-toolbar>
+    <ion-title>I'm a footer</ion-title>
+    <button ion-button icon-left>
+  <ion-icon name="back"></ion-icon>
+  BACK
+    </button>
+
+    <button ion-button icon-right>
+  MENU
+  <ion-icon name="star" ></ion-icon>
+</button>
+
+  </ion-toolbar>
+
+</ion-footer>

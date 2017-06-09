@@ -41,7 +41,7 @@ export class MyApp {
       
 
        //Example implementation
-      this.advert.showBanner();
+     // this.advert.showBanner();
      // setTimeout(this.advert.showInterstitial(), 10000);
 
 
