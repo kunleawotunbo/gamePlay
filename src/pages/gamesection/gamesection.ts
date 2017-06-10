@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PopoverController } from 'ionic-angular';
+import { PopoverPage } from './../popover/popover';
 
 /**
  * Generated class for the Gamesection page.
@@ -19,7 +21,9 @@ export class GameSectionPage {
   public rootPage: any;  
   tabBarElement: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+      public popoverCtrl: PopoverController
+      ) {
     //this.rootPage = 'Gmtabs';
     this.item = navParams.get('item');
     this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
@@ -52,6 +56,13 @@ export class GameSectionPage {
    */
   takeMeBack(){
     this.navCtrl.parent.select(0);
+  }
+
+  presentPopover(myEvent){
+    let popover = this.popoverCtrl.create(PopoverPage);
+    popover.present({
+      ev: myEvent
+    });
   }
 
 }

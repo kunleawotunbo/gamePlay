@@ -16,7 +16,7 @@
 <!--<ion-nav [root]="rootPage"></ion-nav>
 rootPage :: {{rootPage}}-->
 <ion-content padding>
-  <!--rootPage in content :: {{rootPage}}-->
+  <h3> Current week gameplay</h3>
   <img src="assets/images/{{item.id}}.jpg">
 
   <button ion-button icon-only menuToggle (click)="takeMeBack()">
@@ -36,21 +36,20 @@ rootPage :: {{rootPage}}-->
 <ion-tabs>
 
   <ion-tab [root]="tab4Root" tabTitle="BACK" tabIcon="back"></ion-tab>
-  <ion-tab [root]="tab5Root" tabIcon="menu"></ion-tab>
+  <ion-tab [root]="tab5Root" tabIcon="menu" ></ion-tab>
 </ion-tabs>
 
 <ion-footer no-border>
 
-  <ion-toolbar>
-    <ion-title>I'm a footer</ion-title>
-    <button ion-button icon-left>
-  <ion-icon name="back"></ion-icon>
+  <ion-toolbar>  
+    <button ion-button icon-left (click)="takeMeBack()">
+   <ion-icon name="arrow-back"></ion-icon>
   BACK
     </button>
 
-    <button ion-button icon-right>
+    <button ion-button icon-right (click)="presentPopover($event)">
   MENU
-  <ion-icon name="star" ></ion-icon>
+  <ion-icon name="more"></ion-icon>
 </button>
 
   </ion-toolbar>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { GameSectionPage } from './gamesection';
+import { PopoverPage } from '../popover/popover';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { GameSectionPage } from './gamesection';
     GameSectionPage
   ],
   entryComponents: [
-    GameSectionPage
+    GameSectionPage,
+    PopoverPage
   ]
 })
 export class GamesectionModule {}

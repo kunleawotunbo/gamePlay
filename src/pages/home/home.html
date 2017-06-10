@@ -85,10 +85,26 @@
   <ion-list>
     <ion-item *ngFor="let item of gameCategories" (click)="viewItem(item)">
       <ion-avatar item-left>
-        <img src="{{item.gameName}}">
+        <img src="assets/images/{{item.id}}.jpg">
       </ion-avatar>
       <h2>{{item.gameName}}</h2>
     </ion-item>
   </ion-list>
+
+  <!--<ion-card *ngFor="let item of gameCategories" (click)="viewItem(item)">
+    <ion-card-content>
+      
+      <ion-list>
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="assets/images/{{item.id}}.jpg">
+          </ion-avatar>
+          <h2>{{item.gameName}}</h2>
+        </ion-item>
+
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>-->
 
 </ion-content>

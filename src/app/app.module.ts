@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { Rest } from '../providers/rest';
 import { GameSectionPage } from '../pages/gamesection/gamesection';
+import { PopoverPage } from '../pages/popover/popover';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,7 +18,8 @@ import {Advert} from '../providers/advert';
 @NgModule({
   declarations: [
     MyApp,
-    GameSectionPage
+    GameSectionPage,
+    PopoverPage
   ],
   imports: [
     BrowserModule,
@@ -27,12 +29,15 @@ import {Advert} from '../providers/advert';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    GameSectionPage
+    GameSectionPage,
+    PopoverPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    /*
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    */
     Rest,
     AdMobFree,
     AdmobFreeProvider,
