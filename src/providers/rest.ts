@@ -13,29 +13,52 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Rest {
 
-  private apiUrl = 'https://restcountries.eu/rest/v2/all';
-
+  private apiUrlRestcountries = 'https://restcountries.eu/rest/v2/all';
+  private apiUrl = 'https://gameplay-olakunle.herokuapp.com/api/';
+  //private apiUrl = 'http://10.0.2.2:8084/GamePlay/api/';
   constructor(public http: Http) {
     console.log('Hello Rest Provider');
   }
 
   getCountries(): Observable<string[]> {
-    return this.http.get(this.apiUrl)
-                    .map(this.extractData)
-                    .catch(this.handleError);
+    return this.http.get(this.apiUrlRestcountries)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  private extractData(res: Response){
+/**
+ * Get game category list
+ */
+  getGameList() {
+
+    var api = this.apiUrl + 'game/listgames';
+    return this.http.get(api)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  /**
+   * Get weekly game by category and weekNo
+   */
+   getWeeklyGame(categoryId: string, weekNo: string ) {
+     console.log("inside service gameWeekly")
+    var api = this.apiUrl + `weeklygames/getWeekGameByWeekNoAndCat/${categoryId}/${weekNo}`;
+    return this.http.get(api)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  private extractData(res: Response) {
     let body = res.json();
-    return body ||  {};
+    return body || {};
   }
 
-  private handleError(error:  Response | any){
+  private handleError(error: Response | any) {
     let errMsg: string;
-    if (error instanceof Response){
+    if (error instanceof Response) {
       const body = error.json() || '';
       const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`; 
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
     } else {
       errMsg = error.message ? error.message : error.toString();
     }

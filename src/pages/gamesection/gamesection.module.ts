@@ -14,8 +14,7 @@ import { PopoverPage } from '../popover/popover';
     GameSectionPage
   ],
   entryComponents: [
-    GameSectionPage,
-    PopoverPage
+    GameSectionPage,    
   ]
 })
 export class GamesectionModule {}

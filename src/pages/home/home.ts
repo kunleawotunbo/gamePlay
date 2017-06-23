@@ -23,6 +23,9 @@ export class HomePage {
   public bannerOverlap: boolean = true;
   public adAutoShow: boolean = false;
   public keys;
+  public gameList = [];
+  gameReady: boolean = false;
+  // gameCategories: any;
 
   constructor(public navCtrl: NavController, public rest: Rest,
     private platform: Platform, private admobFree: AdmobFreeProvider,
@@ -59,6 +62,7 @@ export class HomePage {
   ionViewDidLoad() {
     this.getCountries();
     this.gameCategories;
+    this.getGameList();
   }
 
   getCountries() {
@@ -69,10 +73,32 @@ export class HomePage {
       );
   }
 
+  getGameList() {
+    //  this.addressReady = false;
+    var addList; // = []
+    console.log(" Calling game service");
+    var data = this.rest.getGameList().map((response: Response) => response).subscribe(
+      data => {
+        addList = data;
+      },
+      error => {
+        console.log(error)
+      },
+      () => {
+        this.gameList = addList;
+        this.gameReady = true;
+      });
+
+
+    //this.addList = this.accountservice.generateAddress(userId).share();
+    //console.log("addList: " + this.addList);
+  }
+
+
   viewItem(item) {
     //console.log("item :: " + item);
     // this.navCtrl.pop()
-    this.navCtrl.push(GameSectionPage, {
+    this.navCtrl.push('GameSectionPage', {
       item: item
     });
   }

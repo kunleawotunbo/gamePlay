@@ -18,8 +18,8 @@ import {Advert} from '../providers/advert';
 @NgModule({
   declarations: [
     MyApp,
-    GameSectionPage,
-    PopoverPage
+   // GameSectionPage,
+  //  PopoverPage
   ],
   imports: [
     BrowserModule,
@@ -29,8 +29,8 @@ import {Advert} from '../providers/advert';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    GameSectionPage,
-    PopoverPage
+    //GameSectionPage,
+    //PopoverPage
   ],
   providers: [
     StatusBar,

@@ -1,45 +1,26 @@
-<!--
-  Generated template for the Gamesection page.
+<ion-header>
+  <ion-toolbar>
+      <button ion-button icon-left (click)="takeMeBack()"> 
+        <ion-icon name="arrow-back"></ion-icon> 
+    </button>   
+  </ion-toolbar>
+</ion-header>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
-<!--<ion-header>
-
-  <ion-navbar>
-    <ion-title>{{item.gameName}}</ion-title>
-  </ion-navbar>
-
-</ion-header>-->
-
-<!--<ion-nav [root]="rootPage"></ion-nav>
-rootPage :: {{rootPage}}-->
 <ion-content padding>
   <h3> Current week gameplay</h3>
   <img src="assets/images/{{item.id}}.jpg">
-
-  <button ion-button icon-only menuToggle (click)="takeMeBack()">
-    <ion-icon name="arrow-back"></ion-icon>
-  </button>
+ <div *ngIf="data; else notLoaded">
+   isPicture :: {{isPicture}}
+   data :: {{data.result.weekNo}}
+   PriceOfWinner :: {{data.result.prizeOfWinners}}
+    </div>
+  <ng-template #notLoaded>Loading Data...</ng-template>
 
 </ion-content>
 
 
-<!--<ion-footer>
-  <ion-navbar>
 
-  </ion-navbar>
-</ion-footer>-->
-
-
-<ion-tabs>
-
-  <ion-tab [root]="tab4Root" tabTitle="BACK" tabIcon="back"></ion-tab>
-  <ion-tab [root]="tab5Root" tabIcon="menu" ></ion-tab>
-</ion-tabs>
-
-<ion-footer no-border>
+<!--<ion-footer no-border>
 
   <ion-toolbar>  
     <button ion-button icon-left (click)="takeMeBack()">
@@ -54,4 +35,27 @@ rootPage :: {{rootPage}}-->
 
   </ion-toolbar>
 
+</ion-footer>-->
+
+<!--http://ionicframework.com/docs/components/#toolbar-buttons-->
+<ion-footer>
+  <ion-toolbar>
+
+      <button ion-button icon-only color="royal" (click)="takeMeBack()">       
+        <ion-icon name="arrow-back"></ion-icon>
+         BACK
+      </button>
+    <!--<ion-buttons start>
+      <button ion-button icon-only color="royal" (click)="takeMeBack()">       
+        <ion-icon name="arrow-back"></ion-icon>
+         Back
+      </button>
+    </ion-buttons>-->
+    <ion-buttons end>
+      <button ion-button icon-right color="royal" (click)="presentPopover($event)">
+        MENU
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-footer>
