@@ -1,56 +1,90 @@
-<ion-header>
+<!--<ion-header>
   <ion-toolbar>
       <button ion-button icon-left (click)="takeMeBack()"> 
         <ion-icon name="arrow-back"></ion-icon> 
     </button>   
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
 
-<ion-content padding>
-  <h3> Current week gameplay</h3>
-  <img src="assets/images/{{item.id}}.jpg">
- <div *ngIf="data; else notLoaded">
-   isPicture :: {{isPicture}}
-   data :: {{data.result.weekNo}}
-   PriceOfWinner :: {{data.result.prizeOfWinners}}
-    </div>
+<ion-content>
+  <!--<ion-content padding>-->
+  <div *ngIf="data; else notLoaded">
+    <ion-list no-lines padding-top>
+      <ion-item>
+        <div *ngIf="isPicture; else notPicture">
+          <ion-card>
+            <img src="assets/images/{{item.id}}.jpg">
+            <ion-card-content>
+              <ion-card-title>
+               <p> Current week gameplay picture </p>
+              </ion-card-title>              
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-item>
+      <!--If question is not picture, display the text question-->
+      <ng-template #notPicture>
+         Question :: {{data.result.gameText}}
+        <ion-item>
+          Question :: {{data.result.gameText}}
+        </ion-item>
+      </ng-template>
+
+      <!--<ion-list no-lines padding-top>-->
+      <ion-item>
+        Week :: {{data.result.weekNo}}
+      </ion-item>
+      <ion-item>
+        Rules :{{data.result.gameRules}}
+      </ion-item>
+      <ion-item>
+        Price Of Winner : {{data.result.prizeOfWinners}}
+      </ion-item>
+      <ion-item>
+        Game Expiry Date : {{data.result.gameExpiryDate | date:'medium'}}
+      </ion-item>
+       </ion-list>
+
+       <!--User answer form-->
+       <!--<form [formGroup]="form" (ngSubmit)="submitForm()">-->
+           <form [formGroup]="form" (ngSubmit)="presentConfirm()">
+      <ion-item>
+        <ion-label>Phone Number : </ion-label>
+        <ion-input type="number" placeholder="Phone Number" formControlName="userPhoneNo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Answer :</ion-label>
+         <ion-input type="text" placeholder="Your Answer" formControlName="userAnswer"></ion-input>
+      </ion-item>
+       <!--<ion-input type="number" hidden placeholder="Game Id" formControlName="gameId" value="{{data.result.id}}"></ion-input>-->
+
+      <ion-item>
+        <ion-label>Game Id :</ion-label>
+         <ion-input type="number" placeholder="Game Id" formControlName="gameId" value="{{data.result.id}}"></ion-input>
+      </ion-item>
+       <!--<button ion-button type="submit" [disabled]="!form.valid">Submit</button>-->
+     <button ion-button block round color="secondary" type="submit" [disabled]="!form.valid">Submit</button> 
+    </form>
+
+ <!--<button ion-button color="primary" block (click)="presentConfirm()">Show Confirm Alert</button>-->
+
+  </div>
+
   <ng-template #notLoaded>Loading Data...</ng-template>
+
 
 </ion-content>
 
 
 
-<!--<ion-footer no-border>
-
-  <ion-toolbar>  
-    <button ion-button icon-left (click)="takeMeBack()">
-   <ion-icon name="arrow-back"></ion-icon>
-  BACK
-    </button>
-
-    <button ion-button icon-right (click)="presentPopover($event)">
-  MENU
-  <ion-icon name="more"></ion-icon>
-</button>
-
-  </ion-toolbar>
-
-</ion-footer>-->
-
 <!--http://ionicframework.com/docs/components/#toolbar-buttons-->
 <ion-footer>
   <ion-toolbar>
 
-      <button ion-button icon-only color="royal" (click)="takeMeBack()">       
+    <button ion-button icon-only color="royal" (click)="takeMeBack()">       
         <ion-icon name="arrow-back"></ion-icon>
          BACK
       </button>
-    <!--<ion-buttons start>
-      <button ion-button icon-only color="royal" (click)="takeMeBack()">       
-        <ion-icon name="arrow-back"></ion-icon>
-         Back
-      </button>
-    </ion-buttons>-->
     <ion-buttons end>
       <button ion-button icon-right color="royal" (click)="presentPopover($event)">
         MENU

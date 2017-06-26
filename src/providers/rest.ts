@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { GameSection } from '../pages/gamesection/gamesection.interface';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
@@ -16,6 +17,7 @@ export class Rest {
   private apiUrlRestcountries = 'https://restcountries.eu/rest/v2/all';
   private apiUrl = 'https://gameplay-olakunle.herokuapp.com/api/';
   //private apiUrl = 'http://10.0.2.2:8084/GamePlay/api/';
+  //private apiUrl = 'http://localhost:8084/GamePlay/api/';
   constructor(public http: Http) {
     console.log('Hello Rest Provider');
   }
@@ -25,6 +27,20 @@ export class Rest {
       .map(this.extractData)
       .catch(this.handleError);
   }
+
+  /**
+   * Post weekly answer.
+   */
+    sendAnswer(gm: GameSection) {     
+       
+        const body = JSON.stringify(gm);
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        var api = this.apiUrl + 'weeklygamesanswers/setanswer';
+        return this.http.post(api, body, { headers: headers })
+            .map((data: Response) => data.json())
+            .catch(this.handleError);
+    }
 
 /**
  * Get game category list

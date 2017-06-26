@@ -4,66 +4,34 @@
   </ion-navbar>
 </ion-header>-->
 
-<ion-content padding>
+<ion-content >
 
-<br>
-<br>
-<br>
-  <ion-grid>
-  <ion-row  >
-    <ion-col col-6 *ngFor="let item of gameList" (click)="viewItem(item)" >
-      <h2>{{item.gameName}}</h2>
-      <!--<div [style.color]="item.color">{{item.gameName}}</div>-->      
-      <!--<ion-card ><h2>{{item.gameName}}</h2></ion-card>-->
-    </ion-col>   
-  </ion-row>  
-  </ion-grid>
-
-<!--
-  <ion-grid>
-     <ion-row style="background-color: #e74c3c;">
-        <ion-col>Alizarin!</ion-col>
-      </ion-row>
- 
-      <ion-row style="background-color: #f1c40f;">
-        <ion-col>Sunflower!</ion-col>
-      </ion-row>
- 
-      <ion-row style="background-color: #9b59b6;">
-        <ion-col>Amethyst!</ion-col>
-      </ion-row>
-  </ion-grid>
-  -->
-
-<!--
-  <ion-list>
-    <ion-item *ngFor="let item of gameList" (click)="viewItem(item)">
-      <ion-avatar item-left>
-       <img src="assets/images/{{item.id}}.jpg">
-      </ion-avatar>
-      <h2>{{item.gameName}}</h2>
-    </ion-item>
-  </ion-list>
-  
--->
-
-
+  <br>
+  <br>
+  <br>
   <!--
-    <ion-card *ngFor="let item of gameCategories" (click)="viewItem(item)">
-    <ion-card-content>
-      
-      <ion-list>
-        <ion-item>
-          <ion-avatar item-left>
-            <img src="assets/images/{{item.id}}.jpg">
-          </ion-avatar>
-          <h2>{{item.gameName}}</h2>
-        </ion-item>
-
-      </ion-list>
-
-    </ion-card-content>
-  </ion-card>
+    <ion-grid>
+    <ion-row>
+      <ion-col col-6 *ngFor="let item of gameList" (click)="viewItem(item)">
+        <h2>{{item.gameName}}</h2>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 *ngFor="let item of gameList" (click)="viewItem(item)">
+        <ion-card>
+          <ion-card-content>
+            <!--<ion-icon name="cart" item-start></ion-icon>-->
+           <h2>{{item.gameName}}</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 
 </ion-content>

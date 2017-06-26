@@ -60,7 +60,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.getCountries();
+   // this.getCountries();
     this.gameCategories;
     this.getGameList();
   }
