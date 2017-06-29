@@ -7,6 +7,8 @@ https://www.youtube.com/watch?v=sXFmkdhOEVc
         h2 {
             color: #FF8C00;
             text-align: center;
+            margin-top: 60px; /* the height of the centered content */
+ 
             
         }
         h3 {
@@ -18,11 +20,23 @@ https://www.youtube.com/watch?v=sXFmkdhOEVc
             
            // background-color: map-get($colors, dark);
         }
-
-        ion-col {
+       
+          ion-col {
             padding: 0px;
+            //background-color: map-get($colors, dark);
            // margin: 0px;
         }
+
+        ion-row {
+             height: 100vh !important;
+        }
+
+        .cell-1 {
+  background-color: #C5DCFC;
+}
+.cell-2 {
+  background-color: #262B69;
+}
     }
 }
 

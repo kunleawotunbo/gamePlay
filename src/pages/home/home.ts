@@ -5,7 +5,8 @@ import { Rest } from '../../providers/rest';
 import { GameSectionPage } from '../gamesection/gamesection';
 import { AdmobFreeProvider } from '../../providers/admob-free-provider';
 import { AdMob, AdMobOptions } from '@ionic-native/admob';
-
+import { ToastController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -25,12 +26,16 @@ export class HomePage {
   public keys;
   public gameList = [];
   gameReady: boolean = false;
-  // gameCategories: any;
+  loader: any;
 
   constructor(public navCtrl: NavController, public rest: Rest,
     private platform: Platform, private admobFree: AdmobFreeProvider,
-    private admob: AdMob
+    private admob: AdMob, public toastCtrl: ToastController,
+     public loadingCtrl: LoadingController
   ) {
+
+    this.presentLoading();
+
     //console.log(this.admobFree.bannerSizes[0]['android']);
     this.platform.ready().then(() => {
       /*
@@ -74,24 +79,22 @@ export class HomePage {
   }
 
   getGameList() {
-    //  this.addressReady = false;
-    var addList; // = []
+    var addList; 
     console.log(" Calling game service");
     var data = this.rest.getGameList().map((response: Response) => response).subscribe(
       data => {
         addList = data;
       },
       error => {
-        console.log(error)
+        console.log(error);
+        this.loader.dismiss();
       },
       () => {
         this.gameList = addList;
         this.gameReady = true;
+        this.loader.dismiss();
       });
 
-
-    //this.addList = this.accountservice.generateAddress(userId).share();
-    //console.log("addList: " + this.addList);
   }
 
 
@@ -101,6 +104,22 @@ export class HomePage {
     this.navCtrl.push('GameSectionPage', {
       item: item
     });
+  }
+
+   presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'No Internet Connection',
+      duration: 3000
+    });
+    toast.present();
+  }
+
+    presentLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: "Loading..."
+    });
+
+    this.loader.present();
   }
 
 

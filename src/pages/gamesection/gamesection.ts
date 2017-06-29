@@ -7,7 +7,8 @@ import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/fo
 import { GameSection } from './gamesection.interface';
 import { Response } from '@angular/http';
 import { AlertController } from 'ionic-angular';
-
+import { ToastController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -29,13 +30,18 @@ export class GameSectionPage {
   private GM: GameSection;
   public alert: boolean;
   public message: string;
+  loader: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public popoverCtrl: PopoverController, public rest: Rest,
-    private formBuilder: FormBuilder, private alertCtrl: AlertController
+    private formBuilder: FormBuilder, private alertCtrl: AlertController,
+    public toastCtrl: ToastController,
+    public loadingCtrl: LoadingController
   ) {
     //this.rootPage = 'Gmtabs';
+    this.presentLoading();
+
     this.item = navParams.get('item');
     this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
     console.log("item in gamesection :: " + this.item);
@@ -43,7 +49,7 @@ export class GameSectionPage {
     this.form = this.formBuilder.group({
       userPhoneNo: ['', Validators.required],
       userAnswer: ['', Validators.required],
-      gameId: ['', ],
+      gameId: ['',],
     });
 
     this.userPhoneNo = this.form.controls['userPhoneNo'];
@@ -143,7 +149,8 @@ export class GameSectionPage {
     });
   }
 
-  getWeeklyGame(categoryId: string, weekNo: string) {
+  getWeeklyGame2(categoryId: string, weekNo: string) {
+
     console.log("inside gameWeekly");
     this.rest.getWeeklyGame(categoryId, weekNo).subscribe(data => {
       this.data = data;
@@ -158,13 +165,50 @@ export class GameSectionPage {
         this.isPicture = false;
       }
       console.log("this.isPicture :: " + this.isPicture);
+      this.loader.dismiss();
     });
+  }
+
+
+  getWeeklyGame(categoryId: string, weekNo: string) {
+    console.log("inside gameWeekly");
+    this.rest.getWeeklyGame(categoryId, weekNo).subscribe(
+      data => {
+        this.data = data;
+      },
+      error => {
+        console.log(error);
+        this.loader.dismiss();
+      },
+      () => {
+        console.log("this.data :: " + this.data.result);
+        console.log("this.data.result.isPicture up:: " + this.data.result.isPicture);
+        var isPics = this.data.result.isPicture;
+        console.log("isPics:: " + isPics);
+
+        if (isPics == 1) {
+          this.isPicture = true;
+        } else {
+          this.isPicture = false;
+        }
+        console.log("this.isPicture :: " + this.isPicture);
+        this.loader.dismiss();
+      });
+
   }
 
   getDate() {
     var date = new Date();
     console.log("date :: " + date);
     return date;
+  }
+
+  presentLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: "Loading..."
+    });
+
+    this.loader.present();
   }
 
 }
