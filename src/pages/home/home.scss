@@ -1,25 +1,29 @@
-page-home {
-    h2 {
-        color: #FF8C00;
-    }
-      h3 {
-        color: #FF8C00;
-    }
+/**
+the .ios, .md allows the styling to affect bot ios and android
+https://www.youtube.com/watch?v=sXFmkdhOEVc
+**/
+.ios, .md{
+    page-home {
+        h2 {
+            color: #FF8C00;
+            text-align: center;
+            
+        }
+        h3 {
+            color: #FF8C00;
+        }
 
-/*
+        ion-card {
+            height: 100px;
+            
+           // background-color: map-get($colors, dark);
+        }
 
-     scroll-content {
-        display: flex;
-        flex-direction: column;
+        ion-col {
+            padding: 0px;
+           // margin: 0px;
+        }
     }
- 
-    ion-grid {
-        padding: 0;
-        height: 100%;
-    }
- 
-    ion-row {
-        flex: 1;
-    }
-*/
 }
+
+
